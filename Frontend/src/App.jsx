@@ -3,6 +3,7 @@ import Login from "./pages/Login/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import Inverter from "./components/Monitor/Inverter/Inverter";
 import Meter from "./components/Monitor/Meter/Meter";
+import DeviceLibrary from './components/device/DeviceLibrary';
 
 const App = () => {
   return (
