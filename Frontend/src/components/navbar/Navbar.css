@@ -1,0 +1,83 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #050404; 
+  padding: 0px 20px; 
+  color: white; 
+  position: relative;
+}
+
+
+.Image-data {
+  display: flex;
+  align-items: center;
+}
+
+.Galo-Image {
+  height: 40px; 
+  width: auto; 
+  border-radius: 5px; 
+}
+
+
+.heading {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+}
+
+
+.profile-menu {
+  position: relative;
+}
+
+.profile-button {
+  background: none; 
+  border: none; 
+  color: white; 
+  font-size: 20px; 
+  cursor: pointer; 
+  padding: 5px;
+}
+
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; 
+  right: 0; 
+  background: #fff;
+  color: #333; 
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 10px; 
+  z-index: 1000; 
+}
+
+
+.dropdown-menu a,
+.dropdown-menu .logout-button {
+  display: block;
+  padding: 3px 7px;
+  text-decoration: none; 
+  color: #333; 
+
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu .logout-button:hover {
+  background-color: #f0f0f0; 
+}
+
+
+.logout-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #e74c3c; 
+}
+
+.logout-button:hover {
+  background-color: #f8d7da; 
+}

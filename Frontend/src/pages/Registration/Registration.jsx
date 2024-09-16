@@ -1,40 +1,47 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Registration.css';
-import GaloEnergy from '../../Assets/GaloEnergy.jpeg';
 import axios from 'axios';
+import './Registration.css';
 
-export const Registration = () => {
+const Registration = () => {
   const [formData, setFormData] = useState({
-    email: '',
     username: '',
-    password: ''
+    email: '',
+    password: '',
   });
 
-  const [errors, setErrors] = useState({
-    email: '',
-    username: '',
-    password: ''
-  });
-
-  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: ''
+    }));
+  };
 
   const validateForm = () => {
     const newErrors = {};
     let isValid = true;
-
-    if (formData.email.trim() === '' || !/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Valid email is required';
-      isValid = false;
-    }
 
     if (formData.username.trim() === '') {
       newErrors.username = 'Username is required';
       isValid = false;
     }
 
-    if (formData.password.length < 8) {
+    if (formData.email.trim() === '' || !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Valid email is required';
+      isValid = false;
+    }
+
+    if (formData.password.trim() === '') {
       newErrors.password = 'Password is required';
       isValid = false;
     }
@@ -43,99 +50,86 @@ export const Registration = () => {
     return isValid;
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    if (validateForm()) {
+      console.log('Form Data:', formData);
+  
+      try {
+        const response = await axios.post("http://localhost:3000/signup", formData);
+        console.log('Response Data:', response.data);
 
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-
-    setErrors({
-      ...errors,
-      [name]: ''
-    });
+        alert('Registration Successful!');
+        navigate('/login');
+      } catch (error) {
+        console.error('There was an error!', error);
+        
+        if (error.response && error.response.data && error.response.data.errors) {
+          setErrors(error.response.data.errors);
+        } else {
+          alert('There was an error with your request. Please try again.');
+        }
+      }
+    }
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  if (validateForm()) {
-    setLoading(true);
-
-    try {
-      const response = await axios.post('http://localhost:3000/signup', formData);
-      console.log('Data submitted successfully:', response.data);
-
-      
-      localStorage.setItem('userRegistered', 'true');
-
-      alert('Registration Successful! Redirecting to login page.');
-      navigate('/login');
-    } catch (error) {
-      console.error('Error submitting data:', error);
-      alert('Registration failed. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  }
-};
-
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(prevState => !prevState);
+  };
 
   return (
-    <div className="registration-page">
-      <div className="Image-container">
-      <img src={GaloEnergy} alt="Galo Energy Image" className="Galo-Energy-Image" />
-      </div>
-      <div className="registration-card">
-        <div>
-          <h2>RMS Registration</h2>
-        </div>
-
+    <div className="register-page">
+      <div className="register-card">
+        <h2>Register</h2>
+       
         <form onSubmit={handleSubmit}>
-          
-          <div className="form-controller-data">
-          <label htmlFor='email'>Email</label>
+          <div className="form-controller">
+            <label htmlFor="username">Username</label>
             <input
-              type="email"
-              name="email"
-              placeholder="Email id"
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
               onChange={handleChange}
-              value={formData.email}
-              disabled={loading}
-            />
-            {errors.email && <p className="error">{errors.email}</p>}
-          </div>
-
-          <div className="form-controller-data">
-          <label htmlFor='username'>Username</label>
-          <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          onChange={handleChange}
-          value={formData.username}
-          disabled={loading}
+              value={formData.username}
             />
             {errors.username && <p className="error">{errors.username}</p>}
           </div>
-          
-          <div className="form-controller-data">
-          <label htmlFor='password'>Password</label>
+          <div className="form-controller">
+            <label htmlFor="email">Email</label>
             <input
-              type="password"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+              value={formData.email}
+            />
+            {errors.email && <p className="error">{errors.email}</p>}
+          </div>
+          <div className="form-controller password-container">
+            <label htmlFor="password">Password</label>
+            <input
+              type={isPasswordVisible ? 'text' : 'password'}
+              id="password"
               name="password"
               placeholder="Password"
               onChange={handleChange}
               value={formData.password}
-              disabled={loading}
             />
+            <span
+              onClick={togglePasswordVisibility}
+              className="eye-icon"
+            >
+              {isPasswordVisible ? '🙈' : '👁️'}
+            </span>
             {errors.password && <p className="error">{errors.password}</p>}
           </div>
-          <button className="submit" type="submit" disabled={loading}>
-            {loading ? 'Registering...' : 'Register'}
-          </button>
           
+          <button className="datasubmit" type="submit">
+            Register
+          </button>
         </form>
       </div>
     </div>

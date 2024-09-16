@@ -1,0 +1,38 @@
+.dashboard {
+  display: flex;
+}
+
+.dashboard-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 200px;
+  height: 50rem; 
+  background-color: #fbd33c;
+  border-right: 1px solid #ddd;
+}
+
+.dashboard-menu li {
+  margin: 0;
+  padding: 10px;
+}
+
+.dashboard-menu a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-menu a:hover {
+  background-color: #ddd;
+}
+
+.dashboard-menu a svg {
+  margin-right: 8px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}

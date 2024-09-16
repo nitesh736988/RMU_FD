@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Login.css';
+import GaloEnergy from '../../Assets/GaloEnergy.jpeg';
 
-const LoginPage = () => {
+const Login = () => {
   const [formData, setFormData] = useState({
-    Emailid: '',
-    Password: ''
+    email: '',
+    password: ''
   });
 
-  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const navigate = useNavigate(); // For navigation
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,82 +30,95 @@ const LoginPage = () => {
   const validateForm = () => {
     const newErrors = {};
     let isValid = true;
-  
-    if (formData.Emailid.trim() === '' || !/\S+@\S+\.\S+/.test(formData.Emailid)) {
-      newErrors.Emailid = 'Valid email is required';
+
+    if (formData.email.trim() === '' || !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Valid email is required';
       isValid = false;
     }
-  
-    if (formData.Password.trim() === '') {
-      newErrors.Password = 'Password is required';
+
+    if (formData.password.trim() === '') {
+      newErrors.password = 'Password is required';
       isValid = false;
     }
-  
+
     setErrors(newErrors);
     return isValid;
-  };
-  
-  const authenticatedUser = async () => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-
-    if (storedUser && storedUser.Emailid === formData.Emailid && storedUser.Password === formData.Password) {
-      return true;
-    }
-    return false;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      const isAuthenticated = await authenticatedUser();
+      try {
+        const response = await axios.post("http://localhost:3000/login", formData, {withCredentials: true});
+        console.log(response.data);
 
-      if (isAuthenticated) {
-        alert('Login Successful!');
-        navigate('/dashboard');
-      } else {
-        alert('Login Failed: Invalid email or password');
+       
+        if (response.data.success) {
+          alert('Login Successful!');
+          navigate('/dashboard'); 
+        } else {
+          alert('Login Failed: Invalid email or password');
+        }
+      } catch (error) {
+        console.error('There was an error!', error);
+        alert('There was an error with your request. Please try again.');
       }
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(prevState => !prevState);
+  };
+
   return (
     <div className="login-page">
-     
       <div className="login-card">
-        <h2>RMS Login</h2>
-        <form onSubmit={handleSubmit}>
+        <div className="Image-container">
+          <img src={GaloEnergy} alt="Galo Energy" className="Galo-Energy-Image" />
+        </div>
 
+        <div className='heading'>
+          <h2>RMS Login</h2>
+        </div>
+       
+        <form onSubmit={handleSubmit}>
           <div className="form-controller">
             <label htmlFor="email">Email</label>
             <input
               type="email"
-              id="email"  
-              name="Emailid"
+              id="email"
+              name="email"
               placeholder="Email"
               onChange={handleChange}
-              value={formData.Emailid}
+              value={formData.email}
             />
-            {errors.Emailid && <p className="error">{errors.Emailid}</p>}
+            {errors.email && <p className="error">{errors.email}</p>}
           </div>
-          <div className="form-controller">
+          <div className="form-controller password-container">
             <label htmlFor="password">Password</label>
             <input
-              type="password"
-              id="password"  
-              name="Password"
+              type={isPasswordVisible ? 'text' : 'password'}
+              id="password"
+              name="password"
               placeholder="Password"
               onChange={handleChange}
-              value={formData.Password}
+              value={formData.password}
             />
-            {errors.Password && <p className="error">{errors.Password}</p>}
+            <span
+              onClick={togglePasswordVisibility}
+              className="eye-icon"
+            >
+              {isPasswordVisible ? '🙈' : '👁️'}
+            </span>
+            {errors.password && <p className="error">{errors.password}</p>}
           </div>
           <button className="datasubmit" type="submit">
             Login
           </button>
           <div className="para">
             <p>
-              Not a member? <Link to="/register">Register Now</Link>
+              Not a member? <Link to="/registration">Register Now</Link>
             </p>
           </div>
         </form>
@@ -111,4 +127,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;
