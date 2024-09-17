@@ -2,7 +2,9 @@ import React from 'react'
 
 const Monitor = () => {
   return (
-    <div>Monitor</div>
+    <>
+      <h2>Monitor</h2>
+    </>
   )
 }
 

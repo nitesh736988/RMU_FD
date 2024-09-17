@@ -1,0 +1,36 @@
+.sidebar {
+  width: 220px;         
+  height: 100vh;         
+  background-color: #fbd33c;
+  padding-top: 20px;      
+  position: sticky;       
+}
+
+
+.sidebar ul {
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 10px;        
+}
+
+.sidebar a {
+  text-decoration: none;  
+  color: #050404;        
+  display: flex;        
+  align-items: center;    
+  padding: 5px 10px;     
+  font-size: 18px;       
+}
+
+.sidebar a svg {
+  margin-right: 10px;
+}
+
+.sidebar a.active {
+  color: #1abc9c; 
+
+}

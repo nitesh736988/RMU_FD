@@ -12,7 +12,7 @@ const Login = () => {
 
   const [errors, setErrors] = useState({});
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const navigate = useNavigate(); // For navigation
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,7 +50,9 @@ const Login = () => {
 
     if (validateForm()) {
       try {
-        const response = await axios.post("http://localhost:3000/login", formData, {withCredentials: true});
+        const response = await axios.post("http://localhost:3000/login", formData
+          // ,{withCredentials: true}
+        );
         console.log(response.data);
 
        
