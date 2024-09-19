@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './Login.css';
-import GaloEnergy from '../../Assets/GaloEnergy.jpeg';
-
+import './Login.css'; 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -51,7 +49,7 @@ const Login = () => {
     if (validateForm()) {
       try {
         const response = await axios.post("http://localhost:3000/login", formData
-          // ,{withCredentials: true}
+          
         );
         console.log(response.data);
 
@@ -76,9 +74,6 @@ const Login = () => {
   return (
     <div className="login-page">
       <div className="login-card">
-        <div className="Image-container">
-          <img src={GaloEnergy} alt="Galo Energy" className="Galo-Energy-Image" />
-        </div>
 
         <div className='heading'>
           <h2>RMS Login</h2>

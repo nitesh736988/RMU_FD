@@ -2,11 +2,9 @@
   width: 220px;         
   height: 100vh;         
   background-color: #fbd33c;
-  padding-top: 20px;      
-  position: sticky;       
+  padding-top: 10px;      
+  position: fixed;       
 }
-
-
 .sidebar ul {
   list-style-type: none; 
   padding: 0;
@@ -14,7 +12,7 @@
 }
 
 .sidebar li {
-  margin: 10px;        
+  padding: 5px 10px;
 }
 
 .sidebar a {
@@ -26,11 +24,7 @@
   font-size: 18px;       
 }
 
-.sidebar a svg {
-  margin-right: 10px;
-}
-
 .sidebar a.active {
   color: #1abc9c; 
-
 }
+

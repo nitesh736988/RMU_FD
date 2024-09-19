@@ -1,4 +1,4 @@
-.navbar {
+/* .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,43 +16,11 @@
 }
 
 
-.heading {
-  text-align: center;
-  margin: 0px;
-}
-
-.profile-menu{
-  background-color: #000;
-}
-
-/* .dropdown-menu {
-  position: absolute;
-  top: 100%; 
-  right: 0; 
-  background: #fff;
-  color: #333; 
-  border: 1px solid #ddd; 
-  border-radius: 5px; 
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
-  padding: 20px; 
-  z-index: 1000;
-  width: 200px;
-}
-
-
-.dropdown-menu a,
-.dropdown-menu .logout-button {
-  display: block;
-  padding: 3px 7px;
-  text-decoration: none; 
-  color: #333; 
+.navbar-heading {
+  text-align:start;
+  margin-right: 60rem;
 
 }
-
-.dropdown-menu a:hover,
-.dropdown-menu .logout-button:hover {
-  background-color: #f0f0f0; 
-} */
 
 
 .logout-button {
@@ -64,4 +32,45 @@
 
 .logout-button:hover {
   background-color: #f8d7da; 
+} */
+
+
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #050404;
+  color: white;
+}
+
+.Image-data img {
+  width: 50px;
+  height: auto;
+}
+
+.navbar-heading h1 {
+  font-size: 1.5rem;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-heading h1 {
+    font-size: 1.2rem;
+  }
+
+  .navbar-right {
+    margin-top: 10px;
+  }
 }
