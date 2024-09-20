@@ -1,48 +1,19 @@
-/* .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #050404; 
-  color: white; 
-  padding: 0.3rem 1rem;
-}
-
-.Galo-Image {
-  width: 4rem; 
-  height: inherit;
-  object-fit: cover;
-  border-radius: 5px; 
-  vertical-align: bottom;
-}
+body {
+  margin: 0px;
+  padding: 0px;
+} 
 
 
-.navbar-heading {
-  text-align:start;
-  margin-right: 60rem;
-
-}
-
-
-.logout-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: #e74c3c; 
-}
-
-.logout-button:hover {
-  background-color: #f8d7da; 
-} */
-
-
-/* Navbar.css */
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   background-color: #050404;
   color: white;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+
 }
 
 .Image-data img {

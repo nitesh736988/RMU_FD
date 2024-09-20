@@ -12,7 +12,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <Sidebar>
+      <Sidebar/>
       <Routes>
         <Route path="/device" element={<Device />} />
         <Route path="/dashboard" element={<Dashboard/>}>
@@ -20,7 +20,6 @@ const App = () => {
           <Route path="plants" element={<Plants />} />
         </Route>
       </Routes>
-      </Sidebar>
     </BrowserRouter>
   );
 };

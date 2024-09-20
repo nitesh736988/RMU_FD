@@ -1,100 +1,59 @@
-.card {
-  background-color: #fff; /* White background for the card */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  overflow: hidden; /* Ensures no content overflows the card */
+.production-container {
+  width: 500px;
+  background: #f5f4f3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 5px;
+  border-radius: 10px;
+  margin-left: 5px;
+  height: 20rem;
+  border: 5px solid #f5f4f3;
+  text-align: start;
+  box-shadow: 10px  black;
+}
+
+.left-card {
+  border-radius: 8px;
+}
+
+h4{
+  margin-left: 15px;
+}
+
+.data{
+  width: 100%;
+  background: #f1f1f1;
+}
+
+
+.production-item {
   display: flex;
   flex-direction: column;
-  height: 100%;
-}
-
-.header {
-  background-color: #007bff; /* Blue background for header */
-  color: #fff; /* White text color */
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  background-color: rgb(236, 240, 240);
+  
 }
 
-.header h2 {
-  margin: 0;
-}
-
-.last-updated {
-  font-size: 0.85rem;
-}
-
-.content {
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.progress-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.progress-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.progress-text {
-  font-size: 1.5rem;
+.label {
+  font-weight:lighter;
   color: #333;
-}
-
-.production-info {
-  flex: 2;
-}
-
-.production-info p {
-  margin: 5px 0;
-}
-
-.production-info strong {
-  display: block;
   margin-bottom: 5px;
+  line-height: 1.25rem;
+
+
+ 
 }
 
-.footer {
-  background-color: #f8f9fa; /* Light background for the footer */
-  padding: 15px;
-  border-top: 1px solid #e9ecef; /* Subtle border on top */
-}
-
-.production-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.stat-item {
-  flex: 1 1 22%; /* Allows 4 items to fit in a row */
-  background-color: #fff; /* White background for stats */
-  border: 1px solid #e9ecef; /* Subtle border */
-  border-radius: 4px; /* Rounded corners */
-  padding: 10px;
+.value {
   text-align: center;
+  font-size: 14px;
+  color: #000;
 }
 
-.stat-item p {
-  margin: 5px 0;
-}
-
-.stat-item strong {
-  display: block;
-  font-size: 1.2rem;
+.totalItem{
+  display: flex;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 1rem;
 }
