@@ -6,6 +6,8 @@ import Navbar from './components/navbar/Navbar';
 import Device from './components/device/Device';
 import Sidebar from './components/Sidebar/Sidebar';
 import Plants from './components/Plants/Plants';
+import Login from './pages/Login/Login';
+import Registration from './pages/Registration/Registration';
 
 const App = () => {
 
@@ -14,6 +16,8 @@ const App = () => {
       <Navbar />
       <Sidebar/>
       <Routes>
+      <Route path='/' element= {<Login/>} />
+      <Route path='/Registration' element= {<Registration/>} />
         <Route path="/device" element={<Device />} />
         <Route path="/dashboard" element={<Dashboard/>}>
           <Route path="monitor" element={<Monitor />} />
