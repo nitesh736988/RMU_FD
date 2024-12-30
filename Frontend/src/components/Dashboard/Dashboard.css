@@ -1,0 +1,10 @@
+.main-container {
+  display: flex;
+  grid-template-columns: 1fr; 
+  gap: 25px; 
+  padding: 10px;
+  margin: 15rem;
+  text-align: center;
+  margin-top: -37rem;
+  width: 100%;
+}

@@ -1,0 +1,34 @@
+.sidebar {
+  width: 180px;         
+  height: 100vh;         
+  background-color: #fbd33c;
+  padding-top: 70px;
+  position: sticky;
+  top: 0;
+  left: 0;  
+  z-index: 2;
+  overflow: hidden;
+}
+.sidebar ul {
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 5px 10px;
+}
+
+.sidebar a {
+  text-decoration: none;  
+  color: #050404;        
+  display: flex;        
+  align-items: center;    
+  padding: 5px 10px;     
+  font-size: 18px;       
+}
+
+.sidebar a.active {
+  color: #1abc9c; 
+}
+
